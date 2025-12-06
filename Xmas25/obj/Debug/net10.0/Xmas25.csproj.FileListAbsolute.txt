@@ -1,0 +1,17 @@
+C:\Users\chr1s\Documents\Projects\Xmas2025\Xmas2025Project\Xmas25\bin\Debug\net10.0\Xmas25.exe
+C:\Users\chr1s\Documents\Projects\Xmas2025\Xmas2025Project\Xmas25\bin\Debug\net10.0\Xmas25.deps.json
+C:\Users\chr1s\Documents\Projects\Xmas2025\Xmas2025Project\Xmas25\bin\Debug\net10.0\Xmas25.runtimeconfig.json
+C:\Users\chr1s\Documents\Projects\Xmas2025\Xmas2025Project\Xmas25\bin\Debug\net10.0\Xmas25.dll
+C:\Users\chr1s\Documents\Projects\Xmas2025\Xmas2025Project\Xmas25\bin\Debug\net10.0\Xmas25.pdb
+C:\Users\chr1s\Documents\Projects\Xmas2025\Xmas2025Project\Xmas25\obj\Debug\net10.0\Xmas25.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chr1s\Documents\Projects\Xmas2025\Xmas2025Project\Xmas25\obj\Debug\net10.0\Xmas25.AssemblyInfoInputs.cache
+C:\Users\chr1s\Documents\Projects\Xmas2025\Xmas2025Project\Xmas25\obj\Debug\net10.0\Xmas25.AssemblyInfo.cs
+C:\Users\chr1s\Documents\Projects\Xmas2025\Xmas2025Project\Xmas25\obj\Debug\net10.0\Xmas25.csproj.CoreCompileInputs.cache
+C:\Users\chr1s\Documents\Projects\Xmas2025\Xmas2025Project\Xmas25\obj\Debug\net10.0\Xmas25.sourcelink.json
+C:\Users\chr1s\Documents\Projects\Xmas2025\Xmas2025Project\Xmas25\obj\Debug\net10.0\Xmas25.dll
+C:\Users\chr1s\Documents\Projects\Xmas2025\Xmas2025Project\Xmas25\obj\Debug\net10.0\refint\Xmas25.dll
+C:\Users\chr1s\Documents\Projects\Xmas2025\Xmas2025Project\Xmas25\obj\Debug\net10.0\Xmas25.pdb
+C:\Users\chr1s\Documents\Projects\Xmas2025\Xmas2025Project\Xmas25\obj\Debug\net10.0\Xmas25.genruntimeconfig.cache
+C:\Users\chr1s\Documents\Projects\Xmas2025\Xmas2025Project\Xmas25\obj\Debug\net10.0\ref\Xmas25.dll
+C:\Users\chr1s\Documents\Projects\Xmas2025\Xmas2025Project\Xmas25\bin\Debug\net10.0\input.txt
+C:\Users\chr1s\Documents\Projects\Xmas2025\Xmas2025Project\Xmas25\bin\Debug\net10.0\Input\input.txt
