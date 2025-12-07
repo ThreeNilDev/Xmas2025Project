@@ -1,10 +1,5 @@
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.IO;
-using System.Net.Http.Headers;
-using System.Runtime.CompilerServices;
-using System.Security;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
 namespace Xmas25
@@ -57,7 +52,8 @@ namespace Xmas25
         {
             string leftOrRight;
             int count;
-            retVal = new List<int>(); // Ensure retVal is assigned before use
+            retVal = new List<int>();
+
             // Implementation for processing data
             foreach (string str in strings)
             {
