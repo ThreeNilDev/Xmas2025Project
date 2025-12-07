@@ -11,7 +11,7 @@ namespace Xmas25
     {
         static void Main(string[] args)
         {
-            System.Console.WriteLine("Hello, World!125");
+            //System.Console.WriteLine("Hello, World!125");
             
             Xmas25.Day1 day1 = new Xmas25.Day1();
             day1.Run();

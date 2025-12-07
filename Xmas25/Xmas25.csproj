@@ -9,10 +9,14 @@
 
   <ItemGroup>
     <None Remove="Input\input.txt" />
+    <None Remove="Input\NewInput.txt" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Input\input.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Input\NewInput.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>

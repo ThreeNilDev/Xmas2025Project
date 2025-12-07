@@ -8,50 +8,73 @@ namespace Xmas25
     {
         private List<string> data = new List<string>();
         private List<int> vaultNumbers = new List<int>();
+        public string Location = "Input/Input.txt";
         public void Run()
         {
-            Console.WriteLine("Hello from Day 1!");
+            //Console.WriteLine("Hello from Day 1!");
 
 
-            GetData(out data);
+            GetData(Location, out data);
             ConvertStringToVaultNumber(data, out vaultNumbers);
             //Run data agaisnt rules - Start at 50
-            RunRules(vaultNumbers);
+            RunRules(vaultNumbers,50);
 
         }
-        private static void RunRules(List<int> vaultNumbers)
+        private static void RunRules(List<int> vaultNumbers, int StartingPosition)
         {
-            int currentPosition = 50;
-            int zeroCount = 0;
+            int currentPosition = StartingPosition;
+            int countZero = 0;
+
             foreach (int number in vaultNumbers)
             {
                 currentPosition += number;
-                if (currentPosition < 0)
-                {
-                    currentPosition = currentPosition + 100;
-                }
-                else if (currentPosition > 99)
-                {
-                    currentPosition = currentPosition - 100;
-                }
+
 
                 if (currentPosition == 0)
                 {
-                    zeroCount += 1;
-                    
+
+                    countZero++;
+
+                }
+                else if (currentPosition < 0)
+                {
+                    while (currentPosition < 0)
+                    {
+                        currentPosition = currentPosition + 100;
+
+                    }
+                    if (currentPosition == 0)
+                    {
+                        countZero++;
+                    }
+
+                }
+                else if (currentPosition > 99)
+                {
+                    while (currentPosition > 99)
+                    {
+                        currentPosition = currentPosition - 100;
+                       
+                    }
+                    if (currentPosition == 0)
+                    {
+                        countZero++;
+                    }
+
                 }
 
+
                 Console.WriteLine($"Current Position: {currentPosition}");
-               
+
             }
             Console.WriteLine($"Final Position: {currentPosition}");
-            Console.WriteLine($"Zero Count: {zeroCount}");
+            Console.WriteLine($"Zero Count: {countZero}");
         }
 
         private static void ConvertStringToVaultNumber(List<string> strings, out List<int> retVal)
         {
             string leftOrRight;
-            int count;
+            int numbers;
             retVal = new List<int>();
 
             // Implementation for processing data
@@ -60,29 +83,20 @@ namespace Xmas25
                 leftOrRight = str.Substring(0, 1);
                 if (leftOrRight == "L")
                 {
-                    count = Int32.Parse(str.Substring(1, str.Length -1));
-                    if (count > 99)
-                    {
-                        count = Convert.ToInt32(Math.Floor((double)(count % 100)));
-                    }
-                    
-                    retVal.Add(-count);
+                    numbers = Int32.Parse(str.Substring(1, str.Length -1));                
+                    retVal.Add(-numbers);
                 }
                 else if (leftOrRight == "R")
                 {
-                    count = Int32.Parse(str.Substring(1, str.Length -1));
-                    if (count > 99)
-                    {
-                        count = Convert.ToInt32(Math.Floor((double)(count % 100)));
-                    }
-                    retVal.Add(count);
+                    numbers = Int32.Parse(str.Substring(1, str.Length -1));
+                    retVal.Add(numbers);
 
                 }
 
             }
         }
 
-        void GetData(out List<string> retVal)
+        void GetData(string Location, out List<string> retVal)
         {
             string? line;
             retVal = new List<string>();
@@ -91,7 +105,7 @@ namespace Xmas25
             try
             {
                 //Pass the file path and file name to the StreamReader constructor
-                StreamReader sr = new StreamReader("Input/input.txt");
+                StreamReader sr = new StreamReader(Location);
                 //Read the first line of text
                 line = sr.ReadLine();
                 //Continue to read until you reach end of file
@@ -116,7 +130,7 @@ namespace Xmas25
             }
             finally
             {
-                Console.WriteLine("Finished Importing Data.");
+                Console.WriteLine("Ending GetData.");
             }
         }
 
