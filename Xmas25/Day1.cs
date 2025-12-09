@@ -1,5 +1,10 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using System.Net.Http.Headers;
+using System.Runtime.CompilerServices;
+using System.Security;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
 namespace Xmas25
@@ -8,95 +13,104 @@ namespace Xmas25
     {
         private List<string> data = new List<string>();
         private List<int> vaultNumbers = new List<int>();
-        public string Location = "Input/Input.txt";
+        int zeroCount = 0;
         public void Run()
         {
-            //Console.WriteLine("Hello from Day 1!");
+            Console.WriteLine("Hello from Day 1!");
 
 
-            GetData(Location, out data);
-            ConvertStringToVaultNumber(data, out vaultNumbers);
+            GetData(out data);
+            ConvertStringToVaultNumber(data, out vaultNumbers, out zeroCount);
             //Run data agaisnt rules - Start at 50
-            RunRules(vaultNumbers,50);
+            RunRules(vaultNumbers, zeroCount);
 
         }
-        private static void RunRules(List<int> vaultNumbers, int StartingPosition)
+        private static void RunRules(List<int> vaultNumbers, int zeroCountIn)
         {
-            int currentPosition = StartingPosition;
-            int countZero = 0;
-
+            int currentPosition = 50;
+            int zeroCount = zeroCountIn;
+            
             foreach (int number in vaultNumbers)
             {
+                int prevousPosition = currentPosition;
                 currentPosition += number;
-
-
-                if (currentPosition == 0)
+                if (currentPosition < 0 )
                 {
-
-                    countZero++;
-
-                }
-                else if (currentPosition < 0)
+                    currentPosition = currentPosition + 100;
+                    if (prevousPosition != 0)
+                    {
+                        zeroCount += 1;
+                    }
+                        
+                  
+                   
+                } 
+                else if (currentPosition > 99 )
                 {
-                    while (currentPosition < 0)
+                    currentPosition = currentPosition - 100;
+                    if (prevousPosition != 0)
                     {
-                        currentPosition = currentPosition + 100;
-
+                        zeroCount += 1;
                     }
-                    if (currentPosition == 0)
-                    {
-                        countZero++;
-                    }
-
-                }
-                else if (currentPosition > 99)
-                {
-                    while (currentPosition > 99)
-                    {
-                        currentPosition = currentPosition - 100;
-                       
-                    }
-                    if (currentPosition == 0)
-                    {
-                        countZero++;
-                    }
-
+                    
                 }
 
+                else if (currentPosition == 0)
+                {
+                    zeroCount += 1;
+                    
+                }
 
                 Console.WriteLine($"Current Position: {currentPosition}");
-
+               
             }
             Console.WriteLine($"Final Position: {currentPosition}");
-            Console.WriteLine($"Zero Count: {countZero}");
+            Console.WriteLine($"Zero Count: {zeroCount}");
         }
 
-        private static void ConvertStringToVaultNumber(List<string> strings, out List<int> retVal)
+        private static void ConvertStringToVaultNumber(List<string> strings, out List<int> retVal, out int retInt)
         {
             string leftOrRight;
-            int numbers;
-            retVal = new List<int>();
-
+            int count;
+            int zeroCount = 0;
+            retVal = new List<int>(); 
             // Implementation for processing data
             foreach (string str in strings)
             {
                 leftOrRight = str.Substring(0, 1);
                 if (leftOrRight == "L")
                 {
-                    numbers = Int32.Parse(str.Substring(1, str.Length -1));                
-                    retVal.Add(-numbers);
+                    count = Int32.Parse(str.Substring(1, str.Length -1));
+                    while (count > 99)
+                    {
+                        //count = Convert.ToInt32(Math.Floor((double)(count % 100)));
+                        count = count - 100;
+                        zeroCount++;
+
+                    }
+                    
+                    retVal.Add(-count);
                 }
                 else if (leftOrRight == "R")
                 {
-                    numbers = Int32.Parse(str.Substring(1, str.Length -1));
-                    retVal.Add(numbers);
+                    count = Int32.Parse(str.Substring(1, str.Length -1));
+                    while (count > 99)
+                    {
+                        //count = Convert.ToInt32(Math.Floor((double)(count % 100)));
+                        count = count - 100;
+                        zeroCount++;
+
+                    }
+                    retVal.Add(count);
 
                 }
 
+
             }
+            retInt = zeroCount;
         }
 
-        void GetData(string Location, out List<string> retVal)
+        void GetData(out List<string> retVal)
         {
             string? line;
             retVal = new List<string>();
@@ -105,7 +119,7 @@ namespace Xmas25
             try
             {
                 //Pass the file path and file name to the StreamReader constructor
-                StreamReader sr = new StreamReader(Location);
+                StreamReader sr = new StreamReader("Input/input.txt");
                 //Read the first line of text
                 line = sr.ReadLine();
                 //Continue to read until you reach end of file
@@ -130,7 +144,7 @@ namespace Xmas25
             }
             finally
             {
-                Console.WriteLine("Ending GetData.");
+                Console.WriteLine("Finished Importing Data.");
             }
         }
 
